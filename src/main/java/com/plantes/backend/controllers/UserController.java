@@ -23,6 +23,11 @@ public class UserController {
         return userRepository.findAll();
     }
 
+    @GetMapping("/more/{id}")
+    public List<User> listMoreThan(@PathVariable("id") Long id) {
+        return userRepository.findByIdGreaterThan(id);
+    }
+
     @GetMapping("/{id}")
     public User one(@PathVariable("id") Long id) {
         Optional<User> userFound = userRepository.findById(id);
